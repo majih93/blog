@@ -1,0 +1,13 @@
+---
+const { title, description, date, url } = Astro.props;
+---
+
+<li class="flex flex-col justify-center mb-10 w-[500px] border-b-[1px] pb-4">
+  <a href={`${url}`} class="block">
+    <h5 class="text-lg font-semibold text-text-primary w-fit mb-2">
+      {title}
+    </h5>
+    <p class="mb-2 text-gray-900 text-sm">{description}</p>
+    <p class="text-xs text-gray-500">24 June, 2024</p>
+  </a>
+</li>
