@@ -1,0 +1,29 @@
+---
+import PostListItemLayout from "../layouts/PostListItemLayout.astro";
+const allPosts = Object.values(
+  import.meta.glob("../pages/posts/*.md", { eager: true })
+);
+---
+
+<main class="flex justify-center flex-col mb-10 items-center">
+  <div>
+    <h2 class="text-3xl font-medium mb-1">Stories</h2>
+    <p class="text-sm mb-10">
+      Lessons I learned from creating value as a programmer.
+    </p>
+
+    <ul class="flex-col justify-center">
+      <!-- post로 전달된 객체값에 url 이 존재한다. -->
+      {
+        allPosts.map((post: any, index: number) => (
+          <PostListItemLayout
+            title={post.frontmatter.title}
+            description={post.frontmatter.description}
+            date={post.frontmatter.pubDate.toString().slice(0, 10)}
+            url={post.url}
+          />
+        ))
+      }
+    </ul>
+  </div>
+</main>
